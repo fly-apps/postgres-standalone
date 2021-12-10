@@ -64,7 +64,7 @@ func NewNode() (*Node, error) {
 
 func (n *Node) NewLocalConnection(ctx context.Context) (*pgx.Conn, error) {
 	host := net.JoinHostPort(n.PrivateIP.String(), strconv.Itoa(n.PGPort))
-	return openConnection(ctx, host, n.OperatorCredentials)
+	return openConnection(ctx, host, n.SUCredentials)
 }
 
 func openConnection(ctx context.Context, host string, creds Credentials) (*pgx.Conn, error) {
